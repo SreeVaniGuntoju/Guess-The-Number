@@ -1,0 +1,45 @@
+import random
+import tkinter as tk
+
+# Set up the window
+root = tk.Tk()
+root.title("Guess the Number")
+root.geometry("600x500")
+root.configure(bg='#e6f7f6',border="6px")
+
+# Generate a random number between 1 and 100
+number = random.randint(1,100)
+
+# Set up the label
+label = tk.Label(root, text="Guess the Number !",font=("Ariel", 20),bg="#e6f7f6")
+
+label.pack(pady=40)
+
+#Entry Widget
+entry = tk.Entry(root)
+entry.pack(pady=20)
+entry.config(font="40")
+
+# Define the function to check the guess
+def check_guess():
+    guess = int(entry.get())
+    
+    if guess == number:
+        result_label.config(text="You guessed the number!")
+        button.config(state="disabled")
+    elif guess < number:
+        result_label.config(text="Too low, try again..")
+    else:
+        result_label.config(text="Too high, try again..")
+        
+    entry.delete(0, tk.END)
+
+# Set up the button and result label
+button = tk.Button(root, text="Guess", command=check_guess,bg="#f2c7d4",font=("Ariel", 15),width=8)
+button.pack(pady=30)
+
+result_label = tk.Label(root, text="",font=("Ariel",23),bg="#e6f7f6")
+result_label.pack(pady=30)
+
+# Start the main loop
+root.mainloop()
