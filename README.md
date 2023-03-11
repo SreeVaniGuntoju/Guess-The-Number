@@ -1,2 +1,2 @@
-# Guess-The-Number-
+# Guess the Number !
 Guessing  the random number.
